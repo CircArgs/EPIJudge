@@ -39,8 +39,16 @@ class ListNode:
 
         return result
 
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.next is not None:
+            return self.next
+        else:
+            raise StopIteration
+
     def __str__(self):
-        return self.__repr__()
+        return repr(self)
 
 
 def list_size(node):

@@ -1,16 +1,24 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
-
+from string import digits
 
 def int_to_string(x: int) -> str:
-    # TODO - you fill in here.
-    return '0'
-
+    if not x:
+        return '0'
+    pos=x>0
+    x=abs(x)
+    ret = []
+    while x>0:
+        ret.append(str(x%10))
+        x//=10
+    return '+'*pos+'-'*(1-pos)+''.join(reversed(ret))
 
 def string_to_int(s: str) -> int:
-    # TODO - you fill in here.
-    return 0
-
+    s=s.strip()
+    ret = 0
+    for i, c in enumerate(reversed(s[1:])):
+        ret+=digits.index(c)*10**i
+    return -ret if s[0]=='-' else ret+digits.index(s[0])*10**(len(s)-1) if s[0]!='+' else ret
 
 def wrapper(x, s):
     if int(int_to_string(x)) != x:

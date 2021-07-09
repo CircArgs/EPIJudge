@@ -1,11 +1,18 @@
 from typing import List
-
+from itertools import chain
 from test_framework import generic_test
 
 
 def buy_and_sell_stock_once(prices: List[float]) -> float:
-    # TODO - you fill in here.
-    return 0.0
+    # n**2
+    # max(chain((a-b for i, b in enumerate(prices) for a in prices[i+1:]), range(1)))
+    curr_min=float('inf')
+    curr_best = 0
+    for i, p in enumerate(prices):
+        curr_best = max(curr_best, p-curr_min)
+        if curr_min>p:
+            curr_min=p
+    return curr_best
 
 
 if __name__ == '__main__':
