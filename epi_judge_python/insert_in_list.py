@@ -23,8 +23,9 @@ def insert_list_wrapper(executor, l, node_idx, new_node_data):
     return l
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('insert_in_list.py',
-                                       'insert_in_list.tsv',
-                                       insert_list_wrapper))
+        generic_test.generic_test_main(
+            "insert_in_list.py", "insert_in_list.tsv", insert_list_wrapper
+        )
+    )

@@ -10,8 +10,8 @@ Hint: Use a lookup table, but don't use 2^64 entries!
 from test_framework import generic_test
 
 
-CACHE_LEN=2**16
-cache=[0, 1]
+CACHE_LEN = 2 ** 16
+cache = [0, 1]
 
 
 def parity(n: int) -> int:
@@ -24,22 +24,22 @@ def parity(n: int) -> int:
         int 0 or 1 for parity
     """
     bl = n.bit_length()
-    while bl>1:
-        if n<len(cache):
+    while bl > 1:
+        if n < len(cache):
             return cache[n]
-        if (bl % 2)==0:
-            s=(bl//2)
-            n=(n&((1 << s) - 1)) ^ (n>>s)
+        if (bl % 2) == 0:
+            s = bl // 2
+            n = (n & ((1 << s) - 1)) ^ (n >> s)
         else:
-            n=(n >> 1 )^(n&1)
-        bl=n.bit_length()
+            n = (n >> 1) ^ (n & 1)
+        bl = n.bit_length()
     return n
 
-#dont bother with dynamic caching just cache in advance
-for i in range(2,CACHE_LEN):
+
+# dont bother with dynamic caching just cache in advance
+for i in range(2, CACHE_LEN):
     cache.append(parity(i))
 
 
-
-if __name__ == '__main__':
-    exit(generic_test.generic_test_main('parity.py', 'parity.tsv', parity))
+if __name__ == "__main__":
+    exit(generic_test.generic_test_main("parity.py", "parity.tsv", parity))

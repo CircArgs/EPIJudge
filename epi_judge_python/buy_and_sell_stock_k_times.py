@@ -8,8 +8,11 @@ def buy_and_sell_stock_k_times(prices: List[float], k: int) -> float:
     return 0.0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('buy_and_sell_stock_k_times.py',
-                                       'buy_and_sell_stock_k_times.tsv',
-                                       buy_and_sell_stock_k_times))
+        generic_test.generic_test_main(
+            "buy_and_sell_stock_k_times.py",
+            "buy_and_sell_stock_k_times.tsv",
+            buy_and_sell_stock_k_times,
+        )
+    )

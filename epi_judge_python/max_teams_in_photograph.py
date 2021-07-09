@@ -20,19 +20,22 @@ def find_largest_number_teams(graph: List[GraphVertex]) -> int:
 @enable_executor_hook
 def find_largest_number_teams_wrapper(executor, k, edges):
     if k <= 0:
-        raise RuntimeError('Invalid k value')
+        raise RuntimeError("Invalid k value")
     graph = [GraphVertex() for _ in range(k)]
 
     for (fr, to) in edges:
         if fr < 0 or fr >= k or to < 0 or to >= k:
-            raise RuntimeError('Invalid vertex index')
+            raise RuntimeError("Invalid vertex index")
         graph[fr].edges.append(graph[to])
 
     return executor.run(functools.partial(find_largest_number_teams, graph))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('max_teams_in_photograph.py',
-                                       'max_teams_in_photograph.tsv',
-                                       find_largest_number_teams_wrapper))
+        generic_test.generic_test_main(
+            "max_teams_in_photograph.py",
+            "max_teams_in_photograph.tsv",
+            find_largest_number_teams_wrapper,
+        )
+    )

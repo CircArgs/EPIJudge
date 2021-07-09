@@ -6,6 +6,5 @@ def power(x: float, y: int) -> float:
     return 0.0
 
 
-if __name__ == '__main__':
-    exit(generic_test.generic_test_main('power_x_y.py', 'power_x_y.tsv',
-                                        power))
+if __name__ == "__main__":
+    exit(generic_test.generic_test_main("power_x_y.py", "power_x_y.tsv", power))

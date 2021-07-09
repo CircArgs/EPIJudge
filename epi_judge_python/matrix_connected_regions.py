@@ -13,7 +13,9 @@ def flip_color_wrapper(x, y, image):
     return image
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('matrix_connected_regions.py',
-                                       'painting.tsv', flip_color_wrapper))
+        generic_test.generic_test_main(
+            "matrix_connected_regions.py", "painting.tsv", flip_color_wrapper
+        )
+    )

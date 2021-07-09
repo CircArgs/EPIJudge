@@ -6,7 +6,9 @@ def rabin_karp(t: str, s: str) -> int:
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('substring_match.py',
-                                       'substring_match.tsv', rabin_karp))
+        generic_test.generic_test_main(
+            "substring_match.py", "substring_match.tsv", rabin_karp
+        )
+    )

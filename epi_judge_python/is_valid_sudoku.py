@@ -9,7 +9,9 @@ def is_valid_sudoku(partial_assignment: List[List[int]]) -> bool:
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('is_valid_sudoku.py',
-                                       'is_valid_sudoku.tsv', is_valid_sudoku))
+        generic_test.generic_test_main(
+            "is_valid_sudoku.py", "is_valid_sudoku.tsv", is_valid_sudoku
+        )
+    )

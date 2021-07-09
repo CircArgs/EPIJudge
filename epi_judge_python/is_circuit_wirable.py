@@ -19,19 +19,22 @@ def is_any_placement_feasible(graph: List[GraphVertex]) -> bool:
 @enable_executor_hook
 def is_any_placement_feasible_wrapper(executor, k, edges):
     if k <= 0:
-        raise RuntimeError('Invalid k value')
+        raise RuntimeError("Invalid k value")
     graph = [GraphVertex() for _ in range(k)]
 
     for (fr, to) in edges:
         if fr < 0 or fr >= k or to < 0 or to >= k:
-            raise RuntimeError('Invalid vertex index')
+            raise RuntimeError("Invalid vertex index")
         graph[fr].edges.append(graph[to])
 
     return executor.run(functools.partial(is_any_placement_feasible, graph))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('is_circuit_wirable.py',
-                                       'is_circuit_wirable.tsv',
-                                       is_any_placement_feasible_wrapper))
+        generic_test.generic_test_main(
+            "is_circuit_wirable.py",
+            "is_circuit_wirable.tsv",
+            is_any_placement_feasible_wrapper,
+        )
+    )

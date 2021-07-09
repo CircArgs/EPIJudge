@@ -8,7 +8,9 @@ def multiply(num1: List[int], num2: List[int]) -> List[int]:
     return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('int_as_array_multiply.py',
-                                       'int_as_array_multiply.tsv', multiply))
+        generic_test.generic_test_main(
+            "int_as_array_multiply.py", "int_as_array_multiply.tsv", multiply
+        )
+    )

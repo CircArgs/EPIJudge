@@ -6,8 +6,7 @@ from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
 
-def generate_all_binary_trees(num_nodes: int
-                              ) -> List[Optional[BinaryTreeNode]]:
+def generate_all_binary_trees(num_nodes: int) -> List[Optional[BinaryTreeNode]]:
     # TODO - you fill in here.
     return []
 
@@ -26,14 +25,16 @@ def serialize_structure(tree):
 
 @enable_executor_hook
 def generate_all_binary_trees_wrapper(executor, num_nodes):
-    result = executor.run(
-        functools.partial(generate_all_binary_trees, num_nodes))
+    result = executor.run(functools.partial(generate_all_binary_trees, num_nodes))
 
     return sorted(map(serialize_structure, result))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('enumerate_trees.py',
-                                       'enumerate_trees.tsv',
-                                       generate_all_binary_trees_wrapper))
+        generic_test.generic_test_main(
+            "enumerate_trees.py",
+            "enumerate_trees.tsv",
+            generate_all_binary_trees_wrapper,
+        )
+    )

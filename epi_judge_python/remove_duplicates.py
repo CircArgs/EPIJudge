@@ -10,9 +10,11 @@ class Name:
         self.first_name, self.last_name = first_name, last_name
 
     def __lt__(self, other) -> bool:
-        return (self.first_name < other.first_name
-                if self.first_name != other.first_name else
-                self.last_name < other.last_name)
+        return (
+            self.first_name < other.first_name
+            if self.first_name != other.first_name
+            else self.last_name < other.last_name
+        )
 
 
 def eliminate_duplicate(A: List[Name]) -> None:
@@ -30,13 +32,15 @@ def eliminate_duplicate_wrapper(executor, names):
 
 
 def comp(expected, result):
-    return all([
-        e == r.first_name for (e, r) in zip(sorted(expected), sorted(result))
-    ])
+    return all([e == r.first_name for (e, r) in zip(sorted(expected), sorted(result))])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('remove_duplicates.py',
-                                       'remove_duplicates.tsv',
-                                       eliminate_duplicate_wrapper, comp))
+        generic_test.generic_test_main(
+            "remove_duplicates.py",
+            "remove_duplicates.tsv",
+            eliminate_duplicate_wrapper,
+            comp,
+        )
+    )

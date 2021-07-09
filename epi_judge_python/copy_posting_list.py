@@ -18,30 +18,31 @@ def assert_lists_equal(orig, copy):
     c_it = copy
     while o_it:
         if not c_it:
-            raise TestFailure('Copied list has fewer nodes than the original')
+            raise TestFailure("Copied list has fewer nodes than the original")
         if o_it.order != c_it.order:
-            raise TestFailure('Order value mismatch')
+            raise TestFailure("Order value mismatch")
         node_mapping[o_it] = c_it
         o_it = o_it.next
         c_it = c_it.next
 
     if c_it:
-        raise TestFailure('Copied list has more nodes than the original')
+        raise TestFailure("Copied list has more nodes than the original")
 
     o_it = orig
     c_it = copy
     while o_it:
         if c_it in node_mapping:
-            raise TestFailure(
-                'Copied list contains a node from the original list')
+            raise TestFailure("Copied list contains a node from the original list")
         if o_it.jump is None:
             if c_it.jump is not None:
                 raise TestFailure(
-                    'Jump link points to a different nodes in the copied list')
+                    "Jump link points to a different nodes in the copied list"
+                )
         else:
             if not node_mapping[o_it.jump] is c_it.jump:
                 raise TestFailure(
-                    'Jump link points to a different nodes in the copied list')
+                    "Jump link points to a different nodes in the copied list"
+                )
         o_it = o_it.next
         c_it = c_it.next
 
@@ -60,7 +61,7 @@ def copy_postings_list_wrapper(executor, l):
             if jump_index != -1:
                 list_it.jump = key_mapping.get(jump_index, None)
                 if not list_it.jump:
-                    raise RuntimeError('Jump index out of range')
+                    raise RuntimeError("Jump index out of range")
 
         return head
 
@@ -71,8 +72,9 @@ def copy_postings_list_wrapper(executor, l):
     assert_lists_equal(head, copy)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('copy_posting_list.py',
-                                       'copy_posting_list.tsv',
-                                       copy_postings_list_wrapper))
+        generic_test.generic_test_main(
+            "copy_posting_list.py", "copy_posting_list.tsv", copy_postings_list_wrapper
+        )
+    )

@@ -30,15 +30,17 @@ def overlapping_no_cycle_lists_wrapper(executor, l0, l1, common):
         else:
             l1 = common
 
-    result = executor.run(functools.partial(overlapping_no_cycle_lists, l0,
-                                            l1))
+    result = executor.run(functools.partial(overlapping_no_cycle_lists, l0, l1))
 
     if result != common:
-        raise TestFailure('Invalid result')
+        raise TestFailure("Invalid result")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('do_terminated_lists_overlap.py',
-                                       'do_terminated_lists_overlap.tsv',
-                                       overlapping_no_cycle_lists_wrapper))
+        generic_test.generic_test_main(
+            "do_terminated_lists_overlap.py",
+            "do_terminated_lists_overlap.tsv",
+            overlapping_no_cycle_lists_wrapper,
+        )
+    )

@@ -21,7 +21,7 @@ class ClientsCreditsInfo:
 
     def max(self) -> str:
         # TODO - you fill in here.
-        return ''
+        return ""
 
 
 def client_credits_info_tester(ops):
@@ -31,28 +31,29 @@ def client_credits_info_tester(ops):
         op = x[0]
         s_arg = x[1]
         i_arg = x[2]
-        if op == 'ClientsCreditsInfo':
+        if op == "ClientsCreditsInfo":
             pass
-        if op == 'max':
+        if op == "max":
             result = cr.max()
             if result != s_arg:
-                raise TestFailure('Max: return value mismatch')
-        elif op == 'remove':
+                raise TestFailure("Max: return value mismatch")
+        elif op == "remove":
             result = cr.remove(s_arg)
             if result != i_arg:
-                raise TestFailure('Remove: return value mismatch')
-        elif op == 'insert':
+                raise TestFailure("Remove: return value mismatch")
+        elif op == "insert":
             cr.insert(s_arg, i_arg)
-        elif op == 'add_all':
+        elif op == "add_all":
             cr.add_all(i_arg)
-        elif op == 'lookup':
+        elif op == "lookup":
             result = cr.lookup(s_arg)
             if result != i_arg:
-                raise TestFailure('Lookup: return value mismatch')
+                raise TestFailure("Lookup: return value mismatch")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('adding_credits.py',
-                                       'adding_credits.tsv',
-                                       client_credits_info_tester))
+        generic_test.generic_test_main(
+            "adding_credits.py", "adding_credits.tsv", client_credits_info_tester
+        )
+    )

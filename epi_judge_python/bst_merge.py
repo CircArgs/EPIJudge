@@ -9,7 +9,7 @@ def merge_two_bsts(A: BstNode, B: BstNode) -> Optional[BstNode]:
     return None
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('bst_merge.py', 'bst_merge.tsv',
-                                       merge_two_bsts))
+        generic_test.generic_test_main("bst_merge.py", "bst_merge.tsv", merge_two_bsts)
+    )

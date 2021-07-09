@@ -8,8 +8,11 @@ def search_smallest(A: List[int]) -> int:
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('search_shifted_sorted_array.py',
-                                       'search_shifted_sorted_array.tsv',
-                                       search_smallest))
+        generic_test.generic_test_main(
+            "search_shifted_sorted_array.py",
+            "search_shifted_sorted_array.tsv",
+            search_smallest,
+        )
+    )

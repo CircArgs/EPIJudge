@@ -13,8 +13,11 @@ def fill_surrounded_regions_wrapper(board):
     return board
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('matrix_enclosed_regions.py',
-                                       'matrix_enclosed_regions.tsv',
-                                       fill_surrounded_regions_wrapper))
+        generic_test.generic_test_main(
+            "matrix_enclosed_regions.py",
+            "matrix_enclosed_regions.tsv",
+            fill_surrounded_regions_wrapper,
+        )
+    )

@@ -6,8 +6,9 @@ def levenshtein_distance(A: str, B: str) -> int:
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('levenshtein_distance.py',
-                                       'levenshtein_distance.tsv',
-                                       levenshtein_distance))
+        generic_test.generic_test_main(
+            "levenshtein_distance.py", "levenshtein_distance.tsv", levenshtein_distance
+        )
+    )

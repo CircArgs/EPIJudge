@@ -9,8 +9,11 @@ def remove_duplicates(L: ListNode) -> Optional[ListNode]:
     return None
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
         generic_test.generic_test_main(
-            'remove_duplicates_from_sorted_list.py',
-            'remove_duplicates_from_sorted_list.tsv', remove_duplicates))
+            "remove_duplicates_from_sorted_list.py",
+            "remove_duplicates_from_sorted_list.tsv",
+            remove_duplicates,
+        )
+    )

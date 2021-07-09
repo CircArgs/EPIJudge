@@ -14,7 +14,9 @@ def search_bst_wrapper(tree, key):
     return result.data if result else -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('search_in_bst.py', 'search_in_bst.tsv',
-                                       search_bst_wrapper))
+        generic_test.generic_test_main(
+            "search_in_bst.py", "search_in_bst.tsv", search_bst_wrapper
+        )
+    )

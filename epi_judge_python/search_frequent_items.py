@@ -13,9 +13,12 @@ def search_frequent_items_wrapper(k, stream):
     return search_frequent_items(k, iter(stream))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('search_frequent_items.py',
-                                       'search_frequent_items.tsv',
-                                       search_frequent_items_wrapper,
-                                       test_utils.unordered_compare))
+        generic_test.generic_test_main(
+            "search_frequent_items.py",
+            "search_frequent_items.tsv",
+            search_frequent_items_wrapper,
+            test_utils.unordered_compare,
+        )
+    )

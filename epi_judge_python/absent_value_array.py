@@ -13,13 +13,16 @@ def find_missing_element_wrapper(stream):
     try:
         res = find_missing_element(iter(stream))
         if res in stream:
-            raise TestFailure('{} appears in stream'.format(res))
+            raise TestFailure("{} appears in stream".format(res))
     except ValueError:
-        raise TestFailure('Unexpected no missing element exception')
+        raise TestFailure("Unexpected no missing element exception")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('absent_value_array.py',
-                                       'absent_value_array.tsv',
-                                       find_missing_element_wrapper))
+        generic_test.generic_test_main(
+            "absent_value_array.py",
+            "absent_value_array.tsv",
+            find_missing_element_wrapper,
+        )
+    )

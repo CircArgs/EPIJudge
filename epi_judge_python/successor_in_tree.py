@@ -21,8 +21,9 @@ def find_successor_wrapper(executor, tree, node_idx):
     return result.data if result else -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('successor_in_tree.py',
-                                       'successor_in_tree.tsv',
-                                       find_successor_wrapper))
+        generic_test.generic_test_main(
+            "successor_in_tree.py", "successor_in_tree.tsv", find_successor_wrapper
+        )
+    )

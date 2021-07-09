@@ -8,8 +8,9 @@ def matrix_in_spiral_order(square_matrix: List[List[int]]) -> List[int]:
     return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('spiral_ordering.py',
-                                       'spiral_ordering.tsv',
-                                       matrix_in_spiral_order))
+        generic_test.generic_test_main(
+            "spiral_ordering.py", "spiral_ordering.tsv", matrix_in_spiral_order
+        )
+    )

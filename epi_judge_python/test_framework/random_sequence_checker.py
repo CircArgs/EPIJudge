@@ -10,9 +10,13 @@ def compute_deviation_multiplier(allowed_false_negative, num_rvs=1):
     individual_rv_error = allowed_false_negative / num_rvs
 
     ERROR_BOUNDS = [
-        1 - 0.682689492137086, 1 - 0.954499736103642, 1 - 0.997300203936740,
-        1 - 0.999936657516334, 1 - 0.999999426696856, 1 - 0.999999998026825,
-        1 - 0.999999999997440
+        1 - 0.682689492137086,
+        1 - 0.954499736103642,
+        1 - 0.997300203936740,
+        1 - 0.999936657516334,
+        1 - 0.999999426696856,
+        1 - 0.999999998026825,
+        1 - 0.999999999997440,
     ]
 
     for i, bound in enumerate(ERROR_BOUNDS):
@@ -36,8 +40,7 @@ def check_frequencies(seq, n, false_negative_tolerance):
 
     # Check that there are roughly len(seq)/n occurrences of key.
     # By roughly we mean the difference is less than k_sigma.
-    return all(
-        abs(freq - avg) <= k_sigma_indiv for freq in indiv_freqs.values())
+    return all(abs(freq - avg) <= k_sigma_indiv for freq in indiv_freqs.values())
 
 
 def check_pairs_frequencies(seq, n, false_negative_tolerance):
@@ -46,23 +49,25 @@ def check_pairs_frequencies(seq, n, false_negative_tolerance):
 
 
 def check_triples_frequencies(seq, n, false_negative_tolerance):
-    seq_triples = [(x, next_x, next_next_x)
-                   for x, next_x, next_next_x in zip(seq, seq[1:], seq[2:])]
+    seq_triples = [
+        (x, next_x, next_next_x)
+        for x, next_x, next_next_x in zip(seq, seq[1:], seq[2:])
+    ]
     return check_frequencies(seq_triples, n * n * n, false_negative_tolerance)
 
 
 def check_birthday_spacings(seq, n):
-    expected_avg_repetition_length = int(
-        math.ceil(math.sqrt(math.log(2) * 2.0 * n)))
+    expected_avg_repetition_length = int(math.ceil(math.sqrt(math.log(2) * 2.0 * n)))
     number_of_subarrays = len(seq) - expected_avg_repetition_length + 1
     MIN_NUMBER_SUBARRAYS = 1000
     if number_of_subarrays < MIN_NUMBER_SUBARRAYS:
         return True  # Not enough subarrays for birthday spacing check
 
     number_of_subarrays_with_repetitions = sum(
-        len(set(seq[i:i + expected_avg_repetition_length])) <
-        expected_avg_repetition_length
-        for i in range(len(seq) - expected_avg_repetition_length))
+        len(set(seq[i : i + expected_avg_repetition_length]))
+        < expected_avg_repetition_length
+        for i in range(len(seq) - expected_avg_repetition_length)
+    )
 
     COUNT_TOLERANCE = 0.4
     return COUNT_TOLERANCE * number_of_subarrays <= number_of_subarrays_with_repetitions
@@ -70,15 +75,18 @@ def check_birthday_spacings(seq, n):
 
 # seq is a sequence of integers, which should be in the range [0,n-1]. We assume n << len(seq).
 def check_sequence_is_uniformly_random(seq, n, false_negative_tolerance):
-    return check_frequencies(seq, n, false_negative_tolerance) and \
-           check_pairs_frequencies(seq, n, false_negative_tolerance) and \
-           check_triples_frequencies(seq, n, false_negative_tolerance) and \
-           check_birthday_spacings(seq, n)
+    return (
+        check_frequencies(seq, n, false_negative_tolerance)
+        and check_pairs_frequencies(seq, n, false_negative_tolerance)
+        and check_triples_frequencies(seq, n, false_negative_tolerance)
+        and check_birthday_spacings(seq, n)
+    )
 
 
 def binomial_coefficient(n, k):
-    return 0 if n < k else math.factorial(n) // (math.factorial(k) *
-                                                 math.factorial(n - k))
+    return (
+        0 if n < k else math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+    )
 
 
 # Get the mth combination in lexicographical order from A (n elements) chosen k at a time.
@@ -104,14 +112,17 @@ def run_func_with_retries(func):
     raise TestFailure("Result is not a random permutation")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     assert check_sequence_is_uniformly_random(
         [random.randint(1, 10) for i in range(1000000)],
         10,
-        false_negative_tolerance=0.01)
+        false_negative_tolerance=0.01,
+    )
     assert not check_sequence_is_uniformly_random(
         [random.randint(1, 11) for i in range(1000000)],
         10,
-        false_negative_tolerance=0.01)
+        false_negative_tolerance=0.01,
+    )
     assert not check_sequence_is_uniformly_random(
-        [i % 10 for i in range(1000000)], 10, false_negative_tolerance=0.01)
+        [i % 10 for i in range(1000000)], 10, false_negative_tolerance=0.01
+    )

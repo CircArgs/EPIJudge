@@ -17,8 +17,11 @@ def delete_duplicates_wrapper(executor, A):
     return A[:idx]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('sorted_array_remove_dups.py',
-                                       'sorted_array_remove_dups.tsv',
-                                       delete_duplicates_wrapper))
+        generic_test.generic_test_main(
+            "sorted_array_remove_dups.py",
+            "sorted_array_remove_dups.tsv",
+            delete_duplicates_wrapper,
+        )
+    )

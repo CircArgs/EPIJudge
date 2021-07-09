@@ -17,7 +17,9 @@ def rotate_array_wrapper(executor, A, rotate_amount):
     return a_copy
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('rotate_array.py', 'rotate_array.tsv',
-                                       rotate_array_wrapper))
+        generic_test.generic_test_main(
+            "rotate_array.py", "rotate_array.tsv", rotate_array_wrapper
+        )
+    )

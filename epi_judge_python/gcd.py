@@ -6,5 +6,5 @@ def gcd(x: int, y: int) -> int:
     return 0
 
 
-if __name__ == '__main__':
-    exit(generic_test.generic_test_main('gcd.py', 'gcd.tsv', gcd))
+if __name__ == "__main__":
+    exit(generic_test.generic_test_main("gcd.py", "gcd.tsv", gcd))

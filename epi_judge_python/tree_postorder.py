@@ -9,8 +9,9 @@ def postorder_traversal(tree: BinaryTreeNode) -> List[int]:
     return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('tree_postorder.py',
-                                       'tree_postorder.tsv',
-                                       postorder_traversal))
+        generic_test.generic_test_main(
+            "tree_postorder.py", "tree_postorder.tsv", postorder_traversal
+        )
+    )

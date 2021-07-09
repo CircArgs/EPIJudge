@@ -4,21 +4,24 @@ from enum import Enum, auto
 class PropertyName(Enum):
     EXCEPTION_MESSAGE = auto()  # message of unhandled exception
     EXPLANATION = auto()  # explanation from TSV file
-    COMMAND = auto(
-    )  # last command, that caused the error, in API-testing programs
-    STATE = auto(
+    COMMAND = auto()  # last command, that caused the error, in API-testing programs
+    STATE = (
+        auto()
     )  # state of the user-defined collection (for instance, in API testing)
     EXPECTED = auto()  # expected result
     RESULT = auto()  # user-produced result
-    MISSING_ITEMS = auto(
+    MISSING_ITEMS = (
+        auto()
     )  # list of items from input that are missing in the result set
-    EXCESS_ITEMS = auto(
-    )  # list of items from result that are missing in the input set
-    MISMATCH_INDEX = auto(
+    EXCESS_ITEMS = auto()  # list of items from result that are missing in the input set
+    MISMATCH_INDEX = (
+        auto()
     )  # for collections: index of the wrong item in result for binary trees: instance of TreePath describing the position of the wrong item
-    EXPECTED_ITEM = auto(
+    EXPECTED_ITEM = (
+        auto()
     )  # value of the expected item in collection (not the whole collection)
-    RESULT_ITEM = auto(
+    RESULT_ITEM = (
+        auto()
     )  # value of the result item in collection (not the whole collection)
 
 
@@ -28,7 +31,7 @@ class Property:
         self._value = value
 
     def name(self):
-        return self._name.name.lower().replace('_', ' ')
+        return self._name.name.lower().replace("_", " ")
 
     def id(self):
         return self._name.value
@@ -45,7 +48,8 @@ class TestFailure(Exception):
     Tested function may raise this exception
     in order to mark the current test as failed.
     """
-    def __init__(self, description=''):
+
+    def __init__(self, description=""):
         super().__init__()
         self._properties = []
         self._description = description
@@ -55,10 +59,11 @@ class TestFailure(Exception):
         return self
 
     def with_mismatch_info(self, mismatch_index, expected_item, result_item):
-        return self\
-            .with_property(PropertyName.MISMATCH_INDEX, mismatch_index)\
-            .with_property(PropertyName.EXPECTED_ITEM, expected_item)\
+        return (
+            self.with_property(PropertyName.MISMATCH_INDEX, mismatch_index)
+            .with_property(PropertyName.EXPECTED_ITEM, expected_item)
             .with_property(PropertyName.RESULT_ITEM, result_item)
+        )
 
     def get_description(self):
         return self._description

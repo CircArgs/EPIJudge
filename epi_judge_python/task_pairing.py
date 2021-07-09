@@ -3,7 +3,7 @@ from typing import List
 
 from test_framework import generic_test
 
-PairedTasks = collections.namedtuple('PairedTasks', ('task_1', 'task_2'))
+PairedTasks = collections.namedtuple("PairedTasks", ("task_1", "task_2"))
 
 
 def optimum_task_assignment(task_durations: List[int]) -> List[PairedTasks]:
@@ -11,7 +11,9 @@ def optimum_task_assignment(task_durations: List[int]) -> List[PairedTasks]:
     return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('task_pairing.py', 'task_pairing.tsv',
-                                       optimum_task_assignment))
+        generic_test.generic_test_main(
+            "task_pairing.py", "task_pairing.tsv", optimum_task_assignment
+        )
+    )

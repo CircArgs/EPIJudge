@@ -7,7 +7,9 @@ def is_symmetric(tree: BinaryTreeNode) -> bool:
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('is_tree_symmetric.py',
-                                       'is_tree_symmetric.tsv', is_symmetric))
+        generic_test.generic_test_main(
+            "is_tree_symmetric.py", "is_tree_symmetric.tsv", is_symmetric
+        )
+    )

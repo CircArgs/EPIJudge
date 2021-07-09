@@ -7,8 +7,9 @@ def is_balanced_binary_tree(tree: BinaryTreeNode) -> bool:
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('is_tree_balanced.py',
-                                       'is_tree_balanced.tsv',
-                                       is_balanced_binary_tree))
+        generic_test.generic_test_main(
+            "is_tree_balanced.py", "is_tree_balanced.tsv", is_balanced_binary_tree
+        )
+    )

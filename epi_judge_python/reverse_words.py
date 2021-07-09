@@ -17,10 +17,12 @@ def reverse_words_wrapper(executor, s):
 
     executor.run(functools.partial(reverse_words, s_copy))
 
-    return ''.join(s_copy)
+    return "".join(s_copy)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('reverse_words.py', 'reverse_words.tsv',
-                                       reverse_words_wrapper))
+        generic_test.generic_test_main(
+            "reverse_words.py", "reverse_words.tsv", reverse_words_wrapper
+        )
+    )

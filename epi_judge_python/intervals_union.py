@@ -5,9 +5,9 @@ from typing import List
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
-Endpoint = collections.namedtuple('Endpoint', ('is_closed', 'val'))
+Endpoint = collections.namedtuple("Endpoint", ("is_closed", "val"))
 
-Interval = collections.namedtuple('Interval', ('left', 'right'))
+Interval = collections.namedtuple("Interval", ("left", "right"))
 
 
 def union_of_intervals(intervals: List[Interval]) -> List[Interval]:
@@ -23,12 +23,14 @@ def union_of_intervals_wrapper(executor, intervals):
 
     result = executor.run(functools.partial(union_of_intervals, intervals))
 
-    return [(i.left.val, i.left.is_closed, i.right.val, i.right.is_closed)
-            for i in result]
+    return [
+        (i.left.val, i.left.is_closed, i.right.val, i.right.is_closed) for i in result
+    ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('intervals_union.py',
-                                       'intervals_union.tsv',
-                                       union_of_intervals_wrapper))
+        generic_test.generic_test_main(
+            "intervals_union.py", "intervals_union.tsv", union_of_intervals_wrapper
+        )
+    )

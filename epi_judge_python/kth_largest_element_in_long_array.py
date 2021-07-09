@@ -17,9 +17,11 @@ def find_kth_largest_unknown_length_wrapper(stream, k):
     return find_kth_largest_unknown_length(iter(stream), k)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
         generic_test.generic_test_main(
-            'kth_largest_element_in_long_array.py',
-            'kth_largest_element_in_long_array.tsv',
-            find_kth_largest_unknown_length_wrapper))
+            "kth_largest_element_in_long_array.py",
+            "kth_largest_element_in_long_array.tsv",
+            find_kth_largest_unknown_length_wrapper,
+        )
+    )

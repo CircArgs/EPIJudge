@@ -8,7 +8,9 @@ def is_arbitrage_exist(graph: List[List[float]]) -> bool:
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('arbitrage.py', 'arbitrage.tsv',
-                                       is_arbitrage_exist))
+        generic_test.generic_test_main(
+            "arbitrage.py", "arbitrage.tsv", is_arbitrage_exist
+        )
+    )

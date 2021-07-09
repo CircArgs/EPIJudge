@@ -4,23 +4,24 @@ from test_framework.test_failure import TestFailure
 
 def decoding(s: str) -> str:
     # TODO - you fill in here.
-    return ''
+    return ""
 
 
 def encoding(s: str) -> str:
     # TODO - you fill in here.
-    return ''
+    return ""
 
 
 def rle_tester(encoded, decoded):
     if decoding(encoded) != decoded:
-        raise TestFailure('Decoding failed')
+        raise TestFailure("Decoding failed")
     if encoding(decoded) != encoded:
-        raise TestFailure('Encoding failed')
+        raise TestFailure("Encoding failed")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('run_length_compression.py',
-                                       'run_length_compression.tsv',
-                                       rle_tester))
+        generic_test.generic_test_main(
+            "run_length_compression.py", "run_length_compression.tsv", rle_tester
+        )
+    )

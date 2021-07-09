@@ -6,7 +6,9 @@ def change_making(cents: int) -> int:
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('making_change.py', 'making_change.tsv',
-                                       change_making))
+        generic_test.generic_test_main(
+            "making_change.py", "making_change.tsv", change_making
+        )
+    )

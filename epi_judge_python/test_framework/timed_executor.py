@@ -26,8 +26,10 @@ class TimedExecutor:
             try:
                 with futures.ThreadPoolExecutor() as executor:
                     return next(
-                        executor.map(self._timed_call, (func, ),
-                                     timeout=self._timeout_seconds))
+                        executor.map(
+                            self._timed_call, (func,), timeout=self._timeout_seconds
+                        )
+                    )
             except futures.TimeoutError:
                 raise TimeoutException(self._timeout_seconds)
 

@@ -36,18 +36,20 @@ def list_pivoting_wrapper(executor, l, x):
                 mode = 1
         elif mode == 0:
             if i < x:
-                raise TestFailure('List is not pivoted')
+                raise TestFailure("List is not pivoted")
             elif i > x:
                 mode = 1
         else:
             if i <= x:
-                raise TestFailure('List is not pivoted')
+                raise TestFailure("List is not pivoted")
 
     if sorted(original) != sorted(pivoted):
-        raise TestFailure('Result list contains different values')
+        raise TestFailure("Result list contains different values")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('pivot_list.py', 'pivot_list.tsv',
-                                       list_pivoting_wrapper))
+        generic_test.generic_test_main(
+            "pivot_list.py", "pivot_list.tsv", list_pivoting_wrapper
+        )
+    )

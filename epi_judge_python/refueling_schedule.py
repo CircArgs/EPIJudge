@@ -17,19 +17,19 @@ def find_ample_city(gallons: List[int], distances: List[int]) -> int:
 
 @enable_executor_hook
 def find_ample_city_wrapper(executor, gallons, distances):
-    result = executor.run(
-        functools.partial(find_ample_city, gallons, distances))
+    result = executor.run(functools.partial(find_ample_city, gallons, distances))
     num_cities = len(gallons)
     tank = 0
     for i in range(num_cities):
         city = (result + i) % num_cities
         tank += gallons[city] * MPG - distances[city]
         if tank < 0:
-            raise TestFailure('Out of gas on city {}'.format(i))
+            raise TestFailure("Out of gas on city {}".format(i))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('refueling_schedule.py',
-                                       'refueling_schedule.tsv',
-                                       find_ample_city_wrapper))
+        generic_test.generic_test_main(
+            "refueling_schedule.py", "refueling_schedule.tsv", find_ample_city_wrapper
+        )
+    )

@@ -8,8 +8,9 @@ from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
-def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
-        node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
+def lca(
+    tree: BinaryTreeNode, node0: BinaryTreeNode, node1: BinaryTreeNode
+) -> Optional[BinaryTreeNode]:
     # TODO - you fill in here.
     return None
 
@@ -18,16 +19,19 @@ def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
 def lca_wrapper(executor, tree, key1, key2):
     strip_parent_link(tree)
     result = executor.run(
-        functools.partial(lca, tree, must_find_node(tree, key1),
-                          must_find_node(tree, key2)))
+        functools.partial(
+            lca, tree, must_find_node(tree, key1), must_find_node(tree, key2)
+        )
+    )
 
     if result is None:
-        raise TestFailure('Result can\'t be None')
+        raise TestFailure("Result can't be None")
     return result.data
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('lowest_common_ancestor.py',
-                                       'lowest_common_ancestor.tsv',
-                                       lca_wrapper))
+        generic_test.generic_test_main(
+            "lowest_common_ancestor.py", "lowest_common_ancestor.tsv", lca_wrapper
+        )
+    )

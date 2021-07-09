@@ -14,8 +14,7 @@ class BinaryTreeNode:
         self.size = size
 
 
-def find_kth_node_binary_tree(tree: BinaryTreeNode,
-                              k: int) -> Optional[BinaryTreeNode]:
+def find_kth_node_binary_tree(tree: BinaryTreeNode, k: int) -> Optional[BinaryTreeNode]:
     # TODO - you fill in here.
     return None
 
@@ -30,16 +29,18 @@ def find_kth_node_binary_tree_wrapper(executor, tree, k):
 
     init_size(tree)
 
-    result = executor.run(functools.partial(find_kth_node_binary_tree, tree,
-                                            k))
+    result = executor.run(functools.partial(find_kth_node_binary_tree, tree, k))
 
     if not result:
-        raise TestFailure('Result can\'t be None')
+        raise TestFailure("Result can't be None")
     return result.data
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('kth_node_in_tree.py',
-                                       'kth_node_in_tree.tsv',
-                                       find_kth_node_binary_tree_wrapper))
+        generic_test.generic_test_main(
+            "kth_node_in_tree.py",
+            "kth_node_in_tree.tsv",
+            find_kth_node_binary_tree_wrapper,
+        )
+    )

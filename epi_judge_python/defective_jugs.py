@@ -5,7 +5,7 @@ from typing import List
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
-Jug = collections.namedtuple('Jug', ('low', 'high'))
+Jug = collections.namedtuple("Jug", ("low", "high"))
 
 
 def check_feasible(jugs: List[Jug], L: int, H: int) -> bool:
@@ -19,8 +19,9 @@ def check_feasible_wrapper(executor, jugs, l, h):
     return executor.run(functools.partial(check_feasible, jugs, l, h))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('defective_jugs.py',
-                                       'defective_jugs.tsv',
-                                       check_feasible_wrapper))
+        generic_test.generic_test_main(
+            "defective_jugs.py", "defective_jugs.tsv", check_feasible_wrapper
+        )
+    )

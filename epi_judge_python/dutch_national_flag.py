@@ -7,9 +7,9 @@ from test_framework.test_utils import enable_executor_hook
 
 RED, WHITE, BLUE = range(3)
 
-#strat: write ordinary QS then adapt so that swapping of pivot shifts range of all values equal to pivot
+# strat: write ordinary QS then adapt so that swapping of pivot shifts range of all values equal to pivot
 
- #demo out of place one liner 
+# demo out of place one liner
 # qs= lambda l: qs([i for i in l if i<l[len(l)//2]])+[i for i in l if i==l[len(l)//2]]+qs([i for i in l if i>l[len(l)//2]]) if l else []
 
 # regular quick sort partition
@@ -53,7 +53,7 @@ RED, WHITE, BLUE = range(3)
 #             A[i], A[p+1], A[p+2:pe+2]=A[pe+1], A[i], A[p+1:pe+1]
 #             s+=1
 #             pe+=1
-        
+
 #         else:
 #             i+=1
 #     i=pe+s
@@ -70,45 +70,46 @@ RED, WHITE, BLUE = range(3)
 #             i+=1
 #     print(i, pe)
 
-#full recursive quicksort
+# full recursive quicksort
 def qs(p, b, e, A):
-    width=e-b
-    if width<=0:
+    width = e - b
+    if width <= 0:
         return
-    elif width==1:
+    elif width == 1:
         A[b], A[e] = min(A[b], A[e]), max(A[b], A[e])
-        return 
-    pv=A[p]
-    i=b
-    s=0
-    pe=p
-    while i<p:
+        return
+    pv = A[p]
+    i = b
+    s = 0
+    pe = p
+    while i < p:
         el = A[i]
-        if el>pv:
-            A[i], A[pe], A[p-1:pe] = A[p-1], A[i], A[p:pe+1]
-            p-=1
-            pe-=1
-            s+=1
-        elif el==pv:
-            A[i], A[p+1], A[p+2:pe+2]=A[pe+1], A[i], A[p+1:pe+1]
-            s+=1
-            pe+=1
-        
+        if el > pv:
+            A[i], A[pe], A[p - 1 : pe] = A[p - 1], A[i], A[p : pe + 1]
+            p -= 1
+            pe -= 1
+            s += 1
+        elif el == pv:
+            A[i], A[p + 1], A[p + 2 : pe + 2] = A[pe + 1], A[i], A[p + 1 : pe + 1]
+            s += 1
+            pe += 1
+
         else:
-            i+=1
-    i=pe+s
-    while i<=e:
-        el=A[i]
-        if el<pv:
-            A[p], A[p+1:i+1] = A[i], A[p:i]
-            p+=1
-            pe+=1
-        elif el==pv:
-            A[p+1], A[p+2:i+1]  = A[i], A[p+1:i]
-            pe+=1
+            i += 1
+    i = pe + s
+    while i <= e:
+        el = A[i]
+        if el < pv:
+            A[p], A[p + 1 : i + 1] = A[i], A[p:i]
+            p += 1
+            pe += 1
+        elif el == pv:
+            A[p + 1], A[p + 2 : i + 1] = A[i], A[p + 1 : i]
+            pe += 1
         else:
-            i+=1
-    qs((b+p-1)//2, b, p-1, A), qs((pe+1+e)//2, pe+1, e, A)
+            i += 1
+    qs((b + p - 1) // 2, b, p - 1, A), qs((pe + 1 + e) // 2, pe + 1, e, A)
+
 
 def swap(l: list, a: int, b: int) -> None:
     """
@@ -211,7 +212,7 @@ def shift_elements(a: list, s: int, e: int, p: int) -> list:
     return a
 
 
-def sol(p:int, l: list) -> list:
+def sol(p: int, l: list) -> list:
     """
     inplace quicksort
     Args:
@@ -222,6 +223,7 @@ def sol(p:int, l: list) -> list:
     if len(l) < 2:
         return l
     return shift_elements(l, 0, len(l) - 1, len(l) // 2)
+
 
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
     sol(pivot_index, A)
@@ -248,13 +250,16 @@ def dutch_flag_partition_wrapper(executor, A, pivot_idx):
         i += 1
 
     if i != len(A):
-        raise TestFailure('Not partitioned after {}th element'.format(i))
+        raise TestFailure("Not partitioned after {}th element".format(i))
     elif any(count):
-        raise TestFailure('Some elements are missing from original array')
+        raise TestFailure("Some elements are missing from original array")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('dutch_national_flag.py',
-                                       'dutch_national_flag.tsv',
-                                       dutch_flag_partition_wrapper))
+        generic_test.generic_test_main(
+            "dutch_national_flag.py",
+            "dutch_national_flag.tsv",
+            dutch_flag_partition_wrapper,
+        )
+    )

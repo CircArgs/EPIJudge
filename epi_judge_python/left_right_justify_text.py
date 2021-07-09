@@ -8,8 +8,9 @@ def justify_text(words: List[str], L: int) -> List[str]:
     return []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('left_right_justify_text.py',
-                                       'left_right_justify_text.tsv',
-                                       justify_text))
+        generic_test.generic_test_main(
+            "left_right_justify_text.py", "left_right_justify_text.tsv", justify_text
+        )
+    )

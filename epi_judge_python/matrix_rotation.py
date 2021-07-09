@@ -13,8 +13,9 @@ def rotate_matrix_wrapper(square_matrix):
     return square_matrix
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('matrix_rotation.py',
-                                       'matrix_rotation.tsv',
-                                       rotate_matrix_wrapper))
+        generic_test.generic_test_main(
+            "matrix_rotation.py", "matrix_rotation.tsv", rotate_matrix_wrapper
+        )
+    )

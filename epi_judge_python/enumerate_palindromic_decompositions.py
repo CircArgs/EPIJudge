@@ -12,9 +12,12 @@ def comp(a, b):
     return sorted(a) == sorted(b)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
         generic_test.generic_test_main(
-            'enumerate_palindromic_decompositions.py',
-            'enumerate_palindromic_decompositions.tsv',
-            palindrome_decompositions, comp))
+            "enumerate_palindromic_decompositions.py",
+            "enumerate_palindromic_decompositions.tsv",
+            palindrome_decompositions,
+            comp,
+        )
+    )

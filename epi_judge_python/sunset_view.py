@@ -12,7 +12,9 @@ def examine_buildings_with_sunset_wrapper(sequence):
     return examine_buildings_with_sunset(iter(sequence))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
-        generic_test.generic_test_main('sunset_view.py', 'sunset_view.tsv',
-                                       examine_buildings_with_sunset))
+        generic_test.generic_test_main(
+            "sunset_view.py", "sunset_view.tsv", examine_buildings_with_sunset
+        )
+    )
