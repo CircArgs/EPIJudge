@@ -15,3 +15,7 @@ class BinaryTreeNode:
 
     def __str__(self):
         return self.__repr__()
+
+    # @property
+    # def height(self) -> int:
+    #     return 1+max(self.left.height if self.left else 0, self.right.height if self.right else 0)
