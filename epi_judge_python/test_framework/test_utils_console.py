@@ -114,14 +114,8 @@ def print_post_run_stats(tests_passed, total_tests, complexity, durations):
             print("Time complexity: {}".format(complexity))
 
         avg_median = avg_and_median_from_durations(durations)
-        print(
-            "Average running time: {}\n"
-            "Median running time:  {}\n".format(
-                duration_to_string(avg_median[0]), duration_to_string(avg_median[1])
-            ),
-            end="",
-        )
+        print(f"Average running tmime: {duration_to_string(avg_median[0])}\nMedian running time: {duration_to_string(avg_median[1])}\nMax running time: {int(max(durations)) } us\nMin running time: {int(min(durations)) } us")
     if tests_passed < total_tests:
         print("*** You've passed {}/{} tests. ***".format(tests_passed, total_tests))
     else:
-        print("*** You've passed ALL tests. Congratulations! ***")
+        print("***  You've passed ALL tests. Congratulations! ***")

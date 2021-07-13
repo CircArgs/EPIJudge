@@ -1,0 +1,19 @@
+[I 19:02:37.948 NotebookApp] JupyterLab extension loaded from /home/nick/anaconda3/lib/python3.7/site-packages/jupyterlab
+[I 19:02:37.948 NotebookApp] JupyterLab application directory is /home/nick/anaconda3/share/jupyter/lab
+[I 19:02:38.620 NotebookApp] Serving notebooks from local directory: /home/nick/Projects/EPIJudge/epi_judge_python
+[I 19:02:38.620 NotebookApp] The Jupyter Notebook is running at:
+[I 19:02:38.620 NotebookApp] http://localhost:8888/?token=c02a17cccfcef1ca6ed28e23150b4707e9c3864d6c494e89
+[I 19:02:38.620 NotebookApp]  or http://127.0.0.1:8888/?token=c02a17cccfcef1ca6ed28e23150b4707e9c3864d6c494e89
+[I 19:02:38.620 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 19:02:38.643 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/nick/.local/share/jupyter/runtime/nbserver-8317-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=c02a17cccfcef1ca6ed28e23150b4707e9c3864d6c494e89
+     or http://127.0.0.1:8888/?token=c02a17cccfcef1ca6ed28e23150b4707e9c3864d6c494e89
+[8390:8390:0713/190354.090190:ERROR:CONSOLE(1)] "[Shields]: Can't request shields panel data. Error: No tab url specified", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_extension_background.bundle.js (1)
+[8390:8390:0713/190354.092522:ERROR:CONSOLE(1)] "[Shields]: Can't request shields panel data. Error: No tab url specified", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_extension_background.bundle.js (1)
+[8390:8390:0713/190354.092694:ERROR:CONSOLE(1)] "[Shields]: Can't request shields panel data. Error: No tab url specified", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_extension_background.bundle.js (1)
+[8390:8390:0713/190406.472385:ERROR:CONSOLE(1)] "[Shields]: Can't request shields panel data. Error: No tab url specified", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_extension_background.bundle.js (1)
+[8390:8390:0713/190406.474475:ERROR:CONSOLE(1)] "[Shields]: Can't request shields panel data. Error: No tab url specified", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_extension_background.bundle.js (1)
