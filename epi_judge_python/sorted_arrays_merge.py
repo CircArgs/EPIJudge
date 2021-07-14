@@ -22,22 +22,23 @@ from test_framework import generic_test
 
 # merge_sorted_arrays = lambda s: reduce(merge, s, [])
 
+
 def merge_sorted_arrays(sorted_arrays: List[List[int]]) -> List[int]:
-    checked = [0]*len(sorted_arrays)
-    ret=[]
-    done=0
-    while done<len(sorted_arrays):
-        curr_i=0
-        curr_min=float('inf')
-        done=0
+    checked = [0] * len(sorted_arrays)
+    ret = []
+    done = 0
+    while done < len(sorted_arrays):
+        curr_i = 0
+        curr_min = float("inf")
+        done = 0
         for i in range(len(sorted_arrays)):
             c, a = checked[i], sorted_arrays[i]
-            if c==len(a):
-                done+=1
-            elif curr_min>a[c]:
-                curr_i=i
-                curr_min=a[c]
-        checked[curr_i]+=1
+            if c == len(a):
+                done += 1
+            elif curr_min > a[c]:
+                curr_i = i
+                curr_min = a[c]
+        checked[curr_i] += 1
         ret.append(curr_min)
 
     return ret[:-1]

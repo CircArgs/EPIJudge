@@ -1,27 +1,30 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
+
 class MaxStore:
     def __init__(self):
         self.store = []
-    
+
     @property
-    def max(self)-> int:
+    def max(self) -> int:
         if self.store:
             return self.store[-1][0]
-        return float('-inf')
+        return float("-inf")
 
     def push(self, x: int):
-        if self.max<x:
+        if self.max < x:
             self.store.append([x, 1])
-        elif x==self.max:
-            self.store[-1][1]+=1
+        elif x == self.max:
+            self.store[-1][1] += 1
+
     def pop(self):
-        if self.store[-1][1]==1:
+        if self.store[-1][1] == 1:
             return self.store.pop()[0]
         else:
-            self.store[-1][1]-=1
+            self.store[-1][1] -= 1
             return self.store[-1][0]
+
 
 class Stack:
     def __init__(self):
@@ -44,11 +47,12 @@ class Stack:
         if self.empty():
             self.max_store.push(x)
         else:
-            if x>self.max():
+            if x > self.max():
                 self.max_store.push(x)
             else:
                 self.max_store.push(self.max())
         self.store.append(x)
+
 
 def stack_tester(ops):
     try:

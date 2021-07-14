@@ -7,6 +7,7 @@ def tree_height(n):
         tree_height(n.left) if n.left else 0, tree_height(n.right) if n.right else 0
     )
 
+
 def is_balanced(n):
     if not n:
         return True, 0
@@ -14,12 +15,11 @@ def is_balanced(n):
     if left[0]:
         right = is_balanced(n.right)
         if right[0]:
-            return abs(right[1]-left[1])<2, max(left[1], right[1])+1
+            return abs(right[1] - left[1]) < 2, max(left[1], right[1]) + 1
         else:
             return False, -1
     else:
         return False, -1
-    
 
 
 def is_balanced_binary_tree(tree: BinaryTreeNode) -> bool:

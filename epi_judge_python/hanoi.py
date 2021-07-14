@@ -7,45 +7,51 @@ from test_framework.test_utils import enable_executor_hook
 
 NUM_PEGS = 3
 
-cache={0:[], 1: [[0, 1]], 2: [[0,2],[0,1],[2,1]]}
+cache = {0: [], 1: [[0, 1]], 2: [[0, 2], [0, 1], [2, 1]]}
 
-swap=lambda x, a, b: x if x not in (a, b) else (a if x==b else b)
+swap = lambda x, a, b: x if x not in (a, b) else (a if x == b else b)
+
+
 def adjust_indices(l: List[List[int]], a, b):
 
-    return [ [swap(i, a, b), swap(j, a, b)] for i,j in l]
+    return [[swap(i, a, b), swap(j, a, b)] for i, j in l]
+
 
 def compute_tower_hanoi_recursive(num_rings: int) -> List[List[int]]:
     if num_rings in cache:
         return cache[num_rings]
     else:
         # step1
-        n_minus_1_sol=compute_tower_hanoi_recursive(num_rings-1)
+        n_minus_1_sol = compute_tower_hanoi_recursive(num_rings - 1)
         # step2
-        base=adjust_indices(n_minus_1_sol, 1, 2)
-        #step3
+        base = adjust_indices(n_minus_1_sol, 1, 2)
+        # step3
         base.append([0, 1])
-        #step4
-        base+=adjust_indices(n_minus_1_sol, 0, 2)
+        # step4
+        base += adjust_indices(n_minus_1_sol, 0, 2)
 
         return base
+
 
 def compute_tower_hanoi_not_recursive(num_rings: int) -> List[List[int]]:
     if num_rings in cache:
         return cache[num_rings]
     else:
-        n_minus_1_sol=cache[2]
-        base=None
+        n_minus_1_sol = cache[2]
+        base = None
         for n in range(2, num_rings):
             # step2
-            base=adjust_indices(n_minus_1_sol, 1, 2)
-            #step3
+            base = adjust_indices(n_minus_1_sol, 1, 2)
+            # step3
             base.append([0, 1])
-            #step4
-            base+=adjust_indices(n_minus_1_sol, 0, 2)
-            n_minus_1_sol=base
+            # step4
+            base += adjust_indices(n_minus_1_sol, 0, 2)
+            n_minus_1_sol = base
         return base
 
-compute_tower_hanoi=compute_tower_hanoi_recursive
+
+compute_tower_hanoi = compute_tower_hanoi_recursive
+
 
 @enable_executor_hook
 def compute_tower_hanoi_wrapper(executor, num_rings):

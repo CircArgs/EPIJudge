@@ -1,6 +1,7 @@
 from binary_tree_node import BinaryTreeNode
 from test_framework import generic_test
 
+
 def inorder_traversal(t):
     if not t:
         return []
@@ -11,6 +12,7 @@ def inorder_traversal(t):
             + (inorder_traversal(t.right) if t.right else [])
         )
 
+
 def is_sorted(l):
     b = float("-inf")
     for i in l:
@@ -20,9 +22,9 @@ def is_sorted(l):
             return False
     return True
 
+
 def is_binary_tree_bst(tree: BinaryTreeNode) -> bool:
     return is_sorted(inorder_traversal(tree))
-
 
 
 if __name__ == "__main__":

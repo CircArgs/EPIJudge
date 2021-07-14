@@ -2,39 +2,41 @@ from typing import List
 
 from test_framework import generic_test
 
+
 def bsearch(v, l, s=None, e=None):
-    if len(l)<3:
+    if len(l) < 3:
         try:
             return 0, l.index(v)
         except ValueError:
             return False
-    s=s if s is not None else 0
-    
-    e=e if e is not None else len(l)
-    d=2
-    lenl=e-s
-    c = lenl//d+s
-    m=c
-    while (c>=s) and (c<e) and (l[c]!=v):
-        d*=2
-        mv = max(lenl//d, 1)
-        if l[c]<v:
-            t =c+ mv
+    s = s if s is not None else 0
+
+    e = e if e is not None else len(l)
+    d = 2
+    lenl = e - s
+    c = lenl // d + s
+    m = c
+    while (c >= s) and (c < e) and (l[c] != v):
+        d *= 2
+        mv = max(lenl // d, 1)
+        if l[c] < v:
+            t = c + mv
         else:
-            t =c- mv
+            t = c - mv
         m = min(c, t)
-        c=t
-    return (c>=s) and (c<e) and (l[c]==v) and (m, c)
+        c = t
+    return (c >= s) and (c < e) and (l[c] == v) and (m, c)
+
 
 def lsearch(v, l):
     f = bsearch(v, l)
-    c=-1
+    c = -1
     while f and c:
         s, c = f
-        if l[s]<v:
-            f=bsearch(v, l, max(0, s), min(len(l), c))
+        if l[s] < v:
+            f = bsearch(v, l, max(0, s), min(len(l), c))
         else:
-            f=bsearch(v, l, 0, max(0, s))
+            f = bsearch(v, l, 0, max(0, s))
     return c
 
 
