@@ -3,9 +3,13 @@ from typing import List
 from test_framework import generic_test
 
 
-def has_three_sum(A: List[int], t: int) -> bool:
-    # TODO - you fill in here.
-    return True
+def has_three_sum(l: List[int], v: int) -> bool:
+    l = set(l)
+    for i in l:
+        for j in l:
+            if v - i - j in l:
+                return True
+    return False
 
 
 if __name__ == "__main__":

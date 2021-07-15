@@ -11,12 +11,83 @@ WHITE, BLACK = range(2)
 
 Coordinate = collections.namedtuple("Coordinate", ("x", "y"))
 
+from functools import lru_cache
+
+# def search(m, s, e):
+#     if s == e:
+#         return True
+#     paths = []
+#     for move in pots:
+#         m_new, after = can_move(m, s, *move)
+#         if after is not None:
+#             paths.append(search(m_new, after, e))
+#     return any(paths)
+
+
+
 
 def search_maze(
-    maze: List[List[int]], s: Coordinate, e: Coordinate
+    m: List[List[int]], s: Coordinate, e: Coordinate
 ) -> List[Coordinate]:
-    # TODO - you fill in here.
-    return []
+    @lru_cache(128)
+    def can_move(n, x=0, y=0):
+        new = Coordinate(n.x - x, n.y - y)
+        if new.x < 0 or new.y < 0 or new.x >= len(m) or new.y >= len(m[0]) or m[new.x][new.y]==1:
+            return None
+        return new
+
+
+    pots = [
+        (-1, 0),
+        (0, 1),
+        (0, -1),
+        (1, 0),
+    ]
+
+
+    def search(s, e, visited=set()):
+        #     import pdb
+
+        #     pdb.set_trace()
+        if s == e:
+            return [e]
+        path = [s]
+        for move in pots:
+            after = can_move(s, *move)
+            if after is not None and after not in visited:
+                future = search(after, e, {*visited, after})
+                if future and future[-1] == e:
+                    path += future
+                    return path
+        return []
+    return search(s, e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def path_element_is_feasible(maze, prev, cur):
