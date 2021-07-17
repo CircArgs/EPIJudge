@@ -10,11 +10,16 @@ from test_framework.random_sequence_checker import (
 )
 from test_framework.test_utils import enable_executor_hook
 
-
+from random import randint
 def random_sampling(k: int, A: List[int]) -> None:
-    # TODO - you fill in here.
-    return
-
+    while len(A)>k:
+        i=randint(0, len(A)-1)
+        del A[i]
+    
+def random_sampling(k: int, A: List[int]) -> None:
+    for i in range(k):
+        idx = randint(i, len(A)-1)
+        A[i], A[idx] = A[idx], A[i]
 
 @enable_executor_hook
 def random_sampling_wrapper(executor, k, A):
