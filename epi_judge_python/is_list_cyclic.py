@@ -6,10 +6,40 @@ from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
+node_eq=lambda a, b: id(a)==id(b)
 
-def has_cycle(head: ListNode) -> Optional[ListNode]:
-    # TODO - you fill in here.
-    return None
+def iter_list(s, step=1, stop_on_cycle=False):
+#     import pdb; pdb.set_trace()
+    l=s
+    first=True
+    while (l is not None) and ( not (node_eq(l, s) and not first) if stop_on_cycle else True):
+        first=False
+        yield l
+        for _ in range(step):
+            try:
+                l=l.next
+            except AttributeError:
+                l=None
+
+def has_cycle(s: ListNode) -> Optional[ListNode]:
+    # import pdb; pdb.set_trace()
+    cycle=False
+    if not(s and s.next):
+        return None
+    for a, b in zip(iter_list(s, 1), iter_list(s.next, 2)):
+        if node_eq(a, b):
+            cycle=True
+            break
+    if not cycle:
+        return None
+    cycle_len=sum(1 for _ in iter_list(a, stop_on_cycle=True))
+    follower=a
+    leader=a
+    for _ in range(cycle_len):
+        leader=leader.next
+    for a, b in zip(iter_list(follower), iter_list(leader)):
+        if node_eq(a, b):
+            return a
 
 
 @enable_executor_hook
