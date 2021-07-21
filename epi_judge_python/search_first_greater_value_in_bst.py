@@ -3,10 +3,26 @@ from typing import Optional
 from bst_node import BstNode
 from test_framework import generic_test
 
+def find(t, v, c=BstNode(float('inf'))):
+    if t is None:
+        return c if c.data!=float('inf') else None
+    if t.data>v and (c.data-v)>(t.data-v):
+        c=t
+    if t.data>v:
+        return find(t.left, v,c)
+    else:
+        return find(t.right, v,c)
 
-def find_first_greater_than_k(tree: BstNode, k: int) -> Optional[BstNode]:
-    # TODO - you fill in here.
-    return None
+
+def find_first_greater_than_k(t, v, c=BstNode(float('inf'))) -> Optional[BstNode]:
+    if t is None:
+        return c if c.data!=float('inf') else None
+    if t.data>v and (c.data-v)>(t.data-v):
+        c=t
+    if t.data>v:
+        return find(t.left, v,c)
+    else:
+        return find(t.right, v,c)
 
 
 def find_first_greater_than_k_wrapper(tree, k):
