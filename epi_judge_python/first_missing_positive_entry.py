@@ -4,8 +4,13 @@ from test_framework import generic_test
 
 
 def find_first_missing_positive(A: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    if not A:
+        return 1
+    upper=max(max(A), 0)
+    A=set(A)
+    for i in range(1, upper+2):
+        if i not in A:
+            return i
 
 
 if __name__ == "__main__":
