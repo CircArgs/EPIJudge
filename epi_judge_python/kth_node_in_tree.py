@@ -13,10 +13,39 @@ class BinaryTreeNode:
         self.right = right
         self.size = size
 
+def find_kth_node_binary_tree(t, k):
+    # the traversal return and the stack to emulate recursion
+    count, stack = 0, [t]
+    # indicator to tell us whether we have gone right and need to explore further lefts in the next iteration below
+    # without this indicator, we will get stuck checking nodes for left positions we have already seen
+    down = True
+    # so long as there are left in the tree
+    while stack:
+        # get the top of the stack
+        e = stack.pop()
+        # we need to check lefts first
+        if down:
+            # indicates we have explored all leftmost positions
+            down = False
+            # if we have an element to the left add it to the stack
+            while e:
+                stack.append(e)
+                e = e.left
+        # if we exhausted leftmost positions look to see if there is a right and if so we'll return the current position and\
+        # (cont) add the right child to the stack while making sure we will check its left children
+        else:
+            count += 1
+            if count == k:
+                return e
+            if e.right:
+                # well need to go left more
+                down = True
+                stack.append(e.right)
+    return
 
-def find_kth_node_binary_tree(tree: BinaryTreeNode, k: int) -> Optional[BinaryTreeNode]:
-    # TODO - you fill in here.
-    return None
+# def find_kth_node_binary_tree(tree: BinaryTreeNode, k: int) -> Optional[BinaryTreeNode]:
+#     # TODO - you fill in here.
+#     return None
 
 
 @enable_executor_hook

@@ -1,9 +1,17 @@
 from test_framework import generic_test
+ops={'*', '-', '+', '/'}
+def ev(l):
+    stack=[0]
+    for e in l:
+        if e in ops:
+            a, b = stack.pop(), stack.pop()
+            stack.append(int(eval(f'{b}{e}{a}')))
+        else:
+            stack.append(e)
+    return int(stack[-1])
 
-
-def evaluate(expression: str) -> int:
-    # TODO - you fill in here.
-    return 0
+def evaluate(s: str) -> int:
+    return ev(s.split(','))
 
 
 if __name__ == "__main__":

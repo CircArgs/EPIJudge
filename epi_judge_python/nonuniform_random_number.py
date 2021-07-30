@@ -7,12 +7,14 @@ from test_framework import generic_test
 from test_framework.random_sequence_checker import run_func_with_retries
 from test_framework.test_utils import enable_executor_hook
 
-
+from itertools import accumulate
+from random import random
 def nonuniform_random_number_generation(
     values: List[int], probabilities: List[float]
 ) -> int:
-    # TODO - you fill in here.
-    return 0
+    rnd=random()
+    return next(v for v, p in zip(values, accumulate(probabilities)) if  p>=rnd)
+    
 
 
 @enable_executor_hook

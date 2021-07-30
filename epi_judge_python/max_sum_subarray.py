@@ -12,7 +12,16 @@ def find_maximum_subarray(l: List[int]) -> int:
         ms[:] = ms[1], max(l[i], ms[1] + l[i])
         ret = max(ret, max(ms))
     return ret
-
+    
+def find_maximum_subarray(l):
+    t=0
+    last = 0
+    for i in range(len(l)):
+        el = l[i]
+        last = max((el, last+el, 0))
+        if last>t:
+            t=last
+    return t
 
 if __name__ == "__main__":
     exit(
