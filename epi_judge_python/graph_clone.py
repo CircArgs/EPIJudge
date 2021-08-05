@@ -10,10 +10,25 @@ class GraphVertex:
         self.label = label
         self.edges: List["GraphVertex"] = []
 
+Node=GraphVertex
 
-def clone_graph(graph: GraphVertex) -> GraphVertex:
-    # TODO - you fill in here.
-    return GraphVertex(0)
+# idea is to follow tried and true create a dictionary tracking ids first pass
+# unpack dictionary into graph second pass
+def clone_graph(root):
+    graph_dict={}
+    def dfs(n):
+        graph_dict[id(n)]=(GraphVertex(n.label), n)
+        for n in n.edges:
+            if id(n) not in graph_dict:
+                dfs(n)
+    dfs(root)
+    for copy_node, node in graph_dict.values():
+        copy_node.edges=[graph_dict[id(i)][0] for i in node.edges]
+    return graph_dict[id(root)][0]
+
+# def clone_graph(graph: GraphVertex) -> GraphVertex:
+#     # TODO - you fill in here.
+#     return GraphVertex(0)
 
 
 def copy_labels(edges):

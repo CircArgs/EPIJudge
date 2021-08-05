@@ -2,10 +2,10 @@ from typing import List
 
 from test_framework import generic_test
 
-
+from functools import reduce
 def find_biggest_n_minus_one_product(A: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    tot=reduce(lambda x, y: max(x)*y, A)
+    return max(tot/e for e in A)
 
 
 if __name__ == "__main__":
