@@ -9,8 +9,19 @@ Item = collections.namedtuple("Item", ("weight", "value"))
 
 
 def optimum_subject_to_capacity(items: List[Item], capacity: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    def dfs(sack, weight, value):
+#         print(sack, weight, value)
+        mv, ms = value, sack
+        for item in items:
+            if (item not in sack) and ((item.weight+weight)<=capacity):
+                temp = dfs({*sack, item}, item.weight+weight, value+item.value)
+#                 print(temp)
+                if temp[1]>mv:
+                    mv=temp[1]
+                    ms=temp[0]
+        return ms, mv
+#     import pdb; pdb.set_trace()
+    return dfs(set(), 0, 0)[1]
 
 
 @enable_executor_hook
