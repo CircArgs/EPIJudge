@@ -5,23 +5,29 @@ from typing import List
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
-Item = collections.namedtuple("Item", ("weight", "value"))
+from collections import namedtuple
+from typing import List
 
+Item = namedtuple("Item", ("weight", "value"))
+Sack = namedtuple("Sack", ('items', "weight", "value"))
+
+def foo(items, capacity):
+    if capacity<0:
+        return float('-inf')
+    if len(items)==0 or capacity==0:
+        return 0
+    item=next(iter(items))
+    return max(item.value+foo(items-{item}, capacity-item.weight), foo(items-{item}, capacity))
 
 def optimum_subject_to_capacity(items: List[Item], capacity: int) -> int:
-    def dfs(sack, weight, value):
-#         print(sack, weight, value)
-        mv, ms = value, sack
-        for item in items:
-            if (item not in sack) and ((item.weight+weight)<=capacity):
-                temp = dfs({*sack, item}, item.weight+weight, value+item.value)
-#                 print(temp)
-                if temp[1]>mv:
-                    mv=temp[1]
-                    ms=temp[0]
-        return ms, mv
-#     import pdb; pdb.set_trace()
-    return dfs(set(), 0, 0)[1]
+    cache = [[0] * (capacity + 1) for _ in range(2)]
+    for item in items:
+        for c in range(capacity + 1):
+            wo = cache[0][c]
+            w = c >= item.weight and cache[0][c - item.weight] + item.value
+            cache[1][c] = max(w, wo)
+        cache = [cache[-1], [0] * (capacity + 1)]
+    return cache[0][-1]
 
 
 @enable_executor_hook
